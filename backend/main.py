@@ -9,6 +9,10 @@ app = FastAPI()
 with open("dummyData.json", "r") as f:
     DUMMY_DATA = json.load(f)
 
+@app.get("/")
+async def root():
+    return JSONResponse(status_code=200, content={"output": "testing root working"})
+
 @app.get("/api/data")
 def get_data():
     """
